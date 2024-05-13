@@ -33,7 +33,7 @@ export default function TranscationCard() {
           <div className={styles.ListButtons}>
             <div>
               <button style={{width:"37px",height:"37px",border:"#FFFFFF",
-borderRadius:"15px",backgroundColor:"#FF3E3E",boxShadow:"0px 4px 4px 0px #00000040",opacity:"0px"}}>
+borderRadius:"15px",backgroundColor:"#FF3E3E",boxShadow:"0px 4px 4px 0px #00000040",opacity:"0px",}}>
                 <MdOutlineCancel />
               </button>
             </div>
