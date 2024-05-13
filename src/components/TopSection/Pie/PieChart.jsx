@@ -30,8 +30,8 @@ export default class PieComponent extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer width={199} height={199}>
-        <PieChart>
+      
+        <PieChart width={199} height={199}>
           <Pie
             data={data}
             cx={100}
@@ -47,7 +47,7 @@ export default class PieComponent extends PureComponent {
             ))}
           </Pie>
         </PieChart>
-      </ResponsiveContainer>
+      
     );
   }
 }
