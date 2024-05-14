@@ -17,7 +17,6 @@ const customStyles = {
     justifyContent: "space-around",
     border: "none",
     boxShadow: "0px 4px 4px 0px #00000040",
-    
   },
   HeadingText: {
     width: "180px",
@@ -52,8 +51,8 @@ const customStyles = {
     height: "51px",
     border: "0px",
     borderRadius: "15px",
-    backgroundColor:"#F4BB4A",
-      
+    backgroundColor: "#F4BB4A",
+
     boxShadow: "0px 4px 4px 0px #00000040",
     fontFamily: "Open Sans",
     fontSize: "16px",
@@ -61,7 +60,7 @@ const customStyles = {
     lineHeight: "21.79px",
     // textAlign: "left",
     color: "#FFFFFF",
-    marginRight:"10px"
+    marginRight: "10px",
   },
   CancelButton: {
     width: "112px",
@@ -76,32 +75,32 @@ const customStyles = {
     fontWeight: "400",
     lineHeight: "21.79px",
     color: "#000000",
-    marginLeft:"10px"
+    marginLeft: "10px",
   },
   ButtonContainer: {
     display: "flex",
     justifyContent: "space-around",
-    alignItems:"center",
+    alignItems: "center",
     width: "100%", // Added width to fill the container
     // marginTop: "20px",
-
   },
-  
 };
 
 const ModalExp = ({ isOpen, onClose }) => {
   const [currentExpense, setCurrentExpense] = useState({});
   const [expenses, setExpenses] = useState([]);
 
-  // Load expenses from localStorage on component mount
+ 
   useEffect(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-    setExpenses(storedExpenses);
-  }, []);
-
-  // Update localStorage when expenses state changes
-  useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
+    let arr = JSON.parse(localStorage.getItem("expenses"));
+    if(expenses.length > 0 ){
+      if(arr && arr.length > 0){
+        localStorage.setItem("expenses", JSON.stringify([...arr,...expenses]));
+      }else{
+        localStorage.setItem("expenses", JSON.stringify([...expenses]));
+      }
+      }
+    
   }, [expenses]);
 
   const handleChange = (e) => {
@@ -167,19 +166,17 @@ const ModalExp = ({ isOpen, onClose }) => {
         </div>
 
         <div styles={customStyles.ButtonContainer}>
-          
-            <button type="submit" style={customStyles.AddButton}>
-              Add Expense
-            </button>
-          
-            <button
-              type="button"
-              style={customStyles.CancelButton}
-              onClick={onClose}
-            >
-              Cancel
-            </button>
-         
+          <button type="submit" style={customStyles.AddButton}>
+            Add Expense
+          </button>
+
+          <button
+            type="button"
+            style={customStyles.CancelButton}
+            onClick={onClose}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </Modal>

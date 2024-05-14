@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
-const ModalAdd = ({ isOpen, onClose }) => {
+const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
   const customStyles = {
     overlay: {
       backgroundColor: "#FFFFFFC4",
@@ -101,12 +101,15 @@ const ModalAdd = ({ isOpen, onClose }) => {
       setTotal((prevTotal) => {
         const newTotal = Number(prevTotal) + Number(currentAdd);
         localStorage.setItem("balance", JSON.stringify(newTotal));
+        updateBalance(newTotal); // Update balance in CardContainer
         onClose();
         return newTotal;
       });
     }
+    // window.location.reload()
     setCurrentAdd("");
     onClose();
+
   };
 
   return (

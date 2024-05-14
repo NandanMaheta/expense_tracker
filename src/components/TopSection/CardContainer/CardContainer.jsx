@@ -8,7 +8,24 @@ import { useEffect } from "react";
 export default function CardContainer() {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
- 
+  const [balance, setBalance] = useState(5000); // Initialize balance state
+
+  const handleUpdateBalance = (newBalance) => {
+    setBalance(newBalance);
+  };
+
+  useEffect(() => {
+    showBalance();
+  }, [balance]); // Watch for changes in balance state
+  
+  const showBalance = async () => {
+     // Fetch balance from localStorage when the component mounts or when balance changes
+     const storedBalance = localStorage.getItem("balance");
+     if (storedBalance) {
+       setBalance(parseFloat(storedBalance)); // Update balance state
+     }
+  }
+
 
   const handleOpenModal1 = () => {
     setIsModalOpen1(true);
@@ -20,6 +37,8 @@ export default function CardContainer() {
 
   const handleOpenModal2 = () => {
     setIsModalOpen2(true);
+    // window.location.reload();
+
   };
 
   const handleCloseModal2 = () => {
@@ -31,7 +50,7 @@ export default function CardContainer() {
       <div>
         <Card
           text={"Wallet Balance: "}
-          value={5000}
+          value={balance}
           button={"+Add Income"}
           buttonColor="#B5DC52"
           onClick={handleOpenModal2}
@@ -46,7 +65,7 @@ export default function CardContainer() {
           onClick={handleOpenModal1}
         />
       </div>
-      <ModalAdd isOpen={isModalOpen2} onClose={handleCloseModal2} />
+      <ModalAdd isOpen={isModalOpen2} onClose={handleCloseModal2} updateBalance={handleUpdateBalance} />
       <ModalExp isOpen={isModalOpen1} onClose={handleCloseModal1} />
     </div>
   );
