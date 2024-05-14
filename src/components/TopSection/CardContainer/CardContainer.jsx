@@ -8,20 +8,11 @@ import { useEffect } from "react";
 export default function CardContainer() {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const [expense,setExpense] = useState(0);
-  const [balance,setBalace] = useState(5000);
-
-  useEffect(() => {
-    const storedExpenses = localStorage.getItem("expenses");
-    if (storedExpenses) {
-      setExpense(JSON.parse(storedExpenses));
-    }
-  }, []);
+ 
 
   const handleOpenModal1 = () => {
     setIsModalOpen1(true);
   };
-
 
   const handleCloseModal1 = () => {
     setIsModalOpen1(false);
@@ -35,16 +26,12 @@ export default function CardContainer() {
     setIsModalOpen2(false);
   };
 
-  const getTotalExpense = () => {
-    return expense.reduce((total, item) => total + item.price, 0);
-  };
-
   return (
     <div className={styles.CardContainer}>
       <div>
         <Card
           text={"Wallet Balance: "}
-          value={balance}
+          value={5000}
           button={"+Add Income"}
           buttonColor="#B5DC52"
           onClick={handleOpenModal2}
@@ -53,7 +40,7 @@ export default function CardContainer() {
       <div>
         <Card
           text={"Expenses: "}
-          value={getTotalExpense()}
+          value={0}
           button={"+Add Expense"}
           buttonColor="#FF9595"
           onClick={handleOpenModal1}
