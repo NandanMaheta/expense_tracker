@@ -1,7 +1,7 @@
 import { FaRupeeSign } from "react-icons/fa";
 import styles from "../../Common.module.css"
 
-export default function Card({ text, value, button,buttonColor }) {
+export default function Card({ text, value, button,buttonColor,onClick  }) {
   return (
     <div className={styles.Card}>
       <div>
@@ -12,7 +12,7 @@ export default function Card({ text, value, button,buttonColor }) {
           {value}
         </span>
       </div>
-      <button className={styles.CardButton} style={{ backgroundColor: buttonColor }}>{button}</button>
+      <button className={styles.CardButton} style={{ backgroundColor: buttonColor }} onClick={onClick}>{button}</button>
     </div>
   );
 }
