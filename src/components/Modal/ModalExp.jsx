@@ -96,8 +96,10 @@ const ModalExp = ({ isOpen, onClose }) => {
     if(expenses.length > 0 ){
       if(arr && arr.length > 0){
         localStorage.setItem("expenses", JSON.stringify([...arr,...expenses]));
+        setExpenses([]);
       }else{
         localStorage.setItem("expenses", JSON.stringify([...expenses]));
+        setExpenses([]);
       }
       }
     
