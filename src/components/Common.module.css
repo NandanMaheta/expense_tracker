@@ -213,7 +213,7 @@ body {
 
   @media screen and (max-width: 426px) {
     width: 96%;
-    height: auto;
+    height: 90vh;
     flex-direction: column;
     max-width: 420px;
     align-items: center;
@@ -223,7 +223,7 @@ body {
 
   @media screen and (min-width: 426px) and (max-width: 768px) {
     width: 96%;
-    height: auto;
+    height: 90vh;
     flex-direction: column;
     max-width: 755px;
     align-items: center;
