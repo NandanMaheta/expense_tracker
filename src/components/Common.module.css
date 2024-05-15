@@ -218,6 +218,7 @@ body {
     max-width: 420px;
     align-items: center;
     margin-bottom: 5px;
+    
   }
 
   @media screen and (min-width: 426px) and (max-width: 768px) {
@@ -230,7 +231,9 @@ body {
   }
 }
 
-.PieContainer {
+.piechart {
+  height: 100px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
