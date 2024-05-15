@@ -18,6 +18,15 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       justifyContent: "space-around",
       border: "none",
       boxShadow: "0px 4px 4px 0px #00000040",
+      // Add media queries for responsiveness
+      '@media (max-width: 768px)': {
+        width: '90%',
+        height: 'auto',
+      },
+      '@media (max-width: 480px)': {
+        width: '80%',
+        height: 'auto',
+      },
     },
     HeadingText: {
       width: "178px",
@@ -37,8 +46,10 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       borderRadius: "15px",
       display: "flex",
       justifyContent: "space-between",
-    //   alignItems: "center",
-      
+      '@media (max-width: 768px)': {
+        width: '100%',
+        flexWrap: 'wrap',
+      },
     },
     input: {
       width: "217px",
@@ -53,7 +64,11 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       fontSize: "16px",
       fontWeight: "400",
       lineHeight: "21.78px",
-      marginRight:"10px"
+      marginRight: "10px",
+      '@media (max-width: 768px)': {
+        width: '100%',
+        marginRight: 0,
+      },
     },
     CancelButton: {
       width: "112px",
@@ -68,22 +83,27 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       fontWeight: "400",
       lineHeight: "21.79px",
       color: "#000000",
-      marginLeft:"10px"
+      marginLeft: "10px",
+      '@media (max-width: 768px)': {
+        width: '100%',
+        marginLeft: 0,
+      },
     },
     AddButton: {
-        width: "145px",
-    height: "51px",
-    border: "0px",
-    borderRadius: "15px",
-    backgroundColor:"#F4BB4A",
-      
-    boxShadow: "0px 4px 4px 0px #00000040",
-    fontFamily: "Open Sans",
-    fontSize: "16px",
-    fontWeight: "700",
-    lineHeight: "21.79px",
-    
-    color: "#FFFFFF",
+      width: "145px",
+      height: "51px",
+      border: "0px",
+      borderRadius: "15px",
+      backgroundColor: "#F4BB4A",
+      boxShadow: "0px 4px 4px 0px #00000040",
+      fontFamily: "Open Sans",
+      fontSize: "16px",
+      fontWeight: "700",
+      lineHeight: "21.79px",
+      color: "#FFFFFF",
+      '@media (max-width: 768px)': {
+        width: '100%',
+      },
     },
   };
 
