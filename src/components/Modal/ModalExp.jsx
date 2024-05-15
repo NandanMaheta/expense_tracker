@@ -45,6 +45,7 @@ const customStyles = {
       "linear-gradient(0deg, #D9D9D9, #D9D9D9), linear-gradient(0deg, #D9D9D9, #D9D9D9), linear-gradient(0deg, #FBFBFB, #FBFBFB)",
     boxShadow: "0px 4px 4px 0px #00000040",
     border: "0px",
+    margin:"5px"
   },
   AddButton: {
     width: "100%",
