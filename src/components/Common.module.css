@@ -45,7 +45,7 @@ body {
   color: #ffffff;
 
   @media screen and (max-width: 426px) {
-    font-size: 14px;
+    /* font-size: 14px; */
     font-weight: 300;
     line-height: 12px;
     width: 100%;
@@ -237,6 +237,11 @@ body {
   align-items: center;
   text-align: center;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    width: 96%;
+  }
+
 }
 
 .BottomHeadingContainer {
