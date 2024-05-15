@@ -233,8 +233,8 @@ body {
 }
 
 .piechart {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -242,9 +242,7 @@ body {
   text-align: center;
   text-align: center;
 
-  @media screen and (max-width: 768px) {
-    width: 96%;
-  }
+  
 
 }
 
