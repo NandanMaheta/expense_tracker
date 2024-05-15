@@ -1,6 +1,6 @@
 import styles from "../../Common.module.css";
 import Card from "./Card";
-import ModalExp from "../../Modal/ModalExp";
+import {ModalExp} from "../../Modal/ModalExp";
 import ModalAdd from "../../Modal/ModalAdd";
 import { useState, useEffect } from "react";
 
@@ -12,9 +12,15 @@ export function CardContainer() {
   
  
   useEffect(() => {
-    showBalance();
+    const intervalId = setInterval(() => {
+      showBalance();
     calculateTotalExpenses();
+    }, 500);
+
+    return () => clearInterval(intervalId);
   }, []);
+    
+ 
 
   const showBalance = () => {
     // Fetch balance from localStorage when the component mounts or when balance changes

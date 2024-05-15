@@ -83,12 +83,13 @@ const customStyles = {
   },
 };
 
-const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBalance }) => {
+export const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBalance }) => {
   const [currentExpense, setCurrentExpense] = useState({});
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
-    let arr = JSON.parse(localStorage.getItem("expenses"));
+    const intervalId = setInterval(() => {
+      let arr = JSON.parse(localStorage.getItem("expenses"));
     if (expenses.length > 0) {
       if (arr && arr.length > 0) {
         localStorage.setItem("expenses", JSON.stringify([...arr, ...expenses]));
@@ -98,8 +99,12 @@ const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBala
         setExpenses([]);
       }
       calculateTotalExpenses();
-    }
+    }}, 500);
+
+    return () => clearInterval(intervalId);
   }, [expenses]);
+
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -190,4 +195,4 @@ const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBala
   );
 };
 
-export default ModalExp;
+
