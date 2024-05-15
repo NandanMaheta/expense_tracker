@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
-const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
+const ModalAdd = ({ isOpen, onClose, updateBalance }) => {
   const customStyles = {
     overlay: {
       backgroundColor: "#FFFFFFC4",
@@ -18,15 +18,6 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       justifyContent: "space-around",
       border: "none",
       boxShadow: "0px 4px 4px 0px #00000040",
-      // Add media queries for responsiveness
-      '@media (max-width: 768px)': {
-        width: '90%',
-        height: 'auto',
-      },
-      '@media (max-width: 480px)': {
-        width: '80%',
-        height: 'auto',
-      },
     },
     HeadingText: {
       width: "178px",
@@ -46,10 +37,7 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       borderRadius: "15px",
       display: "flex",
       justifyContent: "space-between",
-      '@media (max-width: 768px)': {
-        width: '100%',
-        flexWrap: 'wrap',
-      },
+      //   alignItems: "center",
     },
     input: {
       width: "217px",
@@ -65,10 +53,6 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       fontWeight: "400",
       lineHeight: "21.78px",
       marginRight: "10px",
-      '@media (max-width: 768px)': {
-        width: '100%',
-        marginRight: 0,
-      },
     },
     CancelButton: {
       width: "112px",
@@ -84,10 +68,6 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       lineHeight: "21.79px",
       color: "#000000",
       marginLeft: "10px",
-      '@media (max-width: 768px)': {
-        width: '100%',
-        marginLeft: 0,
-      },
     },
     AddButton: {
       width: "145px",
@@ -95,15 +75,14 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       border: "0px",
       borderRadius: "15px",
       backgroundColor: "#F4BB4A",
+
       boxShadow: "0px 4px 4px 0px #00000040",
       fontFamily: "Open Sans",
       fontSize: "16px",
       fontWeight: "700",
       lineHeight: "21.79px",
+
       color: "#FFFFFF",
-      '@media (max-width: 768px)': {
-        width: '100%',
-      },
     },
   };
 
@@ -129,7 +108,6 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
     // window.location.reload()
     setCurrentAdd("");
     onClose();
-
   };
 
   return (
@@ -138,7 +116,7 @@ const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
       <div style={customStyles.FormContainer}>
         <form action="submit">
           <input
-          style={customStyles.input}
+            style={customStyles.input}
             type="number"
             placeholder="Income Amount"
             value={currentAdd}

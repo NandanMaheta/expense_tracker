@@ -85,7 +85,7 @@ export function CardContainer() {
           onClick={handleOpenModal1}
         />
       </div>
-      <ModalAdd isOpen={isModalOpen2} onClose={handleCloseModal2} updateBalance={handleUpdateBalance} />
+      <ModalAdd className={styles.ModalAdd}isOpen={isModalOpen2} onClose={handleCloseModal2} updateBalance={handleUpdateBalance} />
       <ModalExp
         isOpen={isModalOpen1}
         onClose={handleCloseModal1}
