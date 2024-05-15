@@ -31,7 +31,6 @@ const customStyles = {
   },
   InputContainer: {
     display: "flex",
-    // alignItems: "space-between",
     flexWrap: "wrap",
     justifyContent: "space-between",
     width: "460px",
@@ -52,13 +51,11 @@ const customStyles = {
     border: "0px",
     borderRadius: "15px",
     backgroundColor: "#F4BB4A",
-
     boxShadow: "0px 4px 4px 0px #00000040",
     fontFamily: "Open Sans",
     fontSize: "16px",
     fontWeight: "700",
     lineHeight: "21.79px",
-    // textAlign: "left",
     color: "#FFFFFF",
     marginRight: "10px",
   },
@@ -81,28 +78,26 @@ const customStyles = {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-    width: "100%", // Added width to fill the container
-    // marginTop: "20px",
+    width: "100%",
   },
 };
 
-const ModalExp = ({ isOpen, onClose }) => {
+const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBalance }) => {
   const [currentExpense, setCurrentExpense] = useState({});
   const [expenses, setExpenses] = useState([]);
 
- 
   useEffect(() => {
     let arr = JSON.parse(localStorage.getItem("expenses"));
-    if(expenses.length > 0 ){
-      if(arr && arr.length > 0){
-        localStorage.setItem("expenses", JSON.stringify([...arr,...expenses]));
+    if (expenses.length > 0) {
+      if (arr && arr.length > 0) {
+        localStorage.setItem("expenses", JSON.stringify([...arr, ...expenses]));
         setExpenses([]);
-      }else{
+      } else {
         localStorage.setItem("expenses", JSON.stringify([...expenses]));
         setExpenses([]);
       }
-      }
-    
+      calculateTotalExpenses();
+    }
   }, [expenses]);
 
   const handleChange = (e) => {
@@ -116,7 +111,14 @@ const ModalExp = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(currentExpense).length !== 0) {
+      const expenseAmount = parseFloat(currentExpense.price);
+      if (expenseAmount > balance) {
+        alert("Expense exceeds the available balance!");
+        return;
+      }
+
       setExpenses((prevExpenses) => [...prevExpenses, currentExpense]);
+      updateBalance(balance - expenseAmount); // Subtract expense from balance
       setCurrentExpense({});
     }
     onClose();
@@ -167,7 +169,7 @@ const ModalExp = ({ isOpen, onClose }) => {
           />
         </div>
 
-        <div styles={customStyles.ButtonContainer}>
+        <div style={customStyles.ButtonContainer}>
           <button type="submit" style={customStyles.AddButton}>
             Add Expense
           </button>
@@ -184,4 +186,5 @@ const ModalExp = ({ isOpen, onClose }) => {
     </Modal>
   );
 };
+
 export default ModalExp;
