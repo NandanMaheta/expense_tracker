@@ -218,7 +218,7 @@ body {
     max-width: 420px;
     align-items: center;
     margin-bottom: 5px;
-    
+    margin-top: auto;
   }
 
   @media screen and (min-width: 426px) and (max-width: 768px) {
@@ -228,6 +228,7 @@ body {
     max-width: 755px;
     align-items: center;
     text-align: center;
+    margin-top: auto;
   }
 }
 
