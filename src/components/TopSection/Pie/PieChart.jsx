@@ -30,7 +30,7 @@ export default class PieComponent extends PureComponent {
 
   render() {
     return (
-        <div className={styles.PieChart}> <PieChart width="100%" height="100%">
+         <PieChart width={190} height={190}>
         <Pie
           data={data}
           cx={100}
@@ -45,7 +45,7 @@ export default class PieComponent extends PureComponent {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-      </PieChart></div>
+      </PieChart>
        
         
       
