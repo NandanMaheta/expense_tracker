@@ -4,12 +4,13 @@ import ModalExp from "../../Modal/ModalExp";
 import ModalAdd from "../../Modal/ModalAdd";
 import { useState, useEffect } from "react";
 
-export default function CardContainer() {
+export function CardContainer() {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [balance, setBalance] = useState(5000); // Initialize balance state
   const [totalExp, setTotalExp] = useState(0);
-
+  
+ 
   useEffect(() => {
     showBalance();
     calculateTotalExpenses();
@@ -27,6 +28,7 @@ export default function CardContainer() {
     const data = localStorage.getItem("expenses");
     let price = [];
     if (data) {
+      
       const expenses = JSON.parse(data); // Parse the JSON string into an array
       price = expenses.map((item) => Number(item.price));
     }

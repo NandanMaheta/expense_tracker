@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
+import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 
 const customStyles = {
   overlay: {
@@ -113,7 +114,7 @@ const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBala
     if (Object.keys(currentExpense).length !== 0) {
       const expenseAmount = parseFloat(currentExpense.price);
       if (expenseAmount > balance) {
-        alert("Expense exceeds the available balance!");
+        enqueueSnackbar("Expense exceeds the available balance!");
         return;
       }
 
@@ -125,6 +126,7 @@ const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBala
   };
 
   return (
+    <SnackbarProvider>
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
       <p style={customStyles.HeadingText}>Add Expense</p>
       <form onSubmit={handleSubmit}>
@@ -184,6 +186,7 @@ const ModalExp = ({ isOpen, onClose, calculateTotalExpenses, balance, updateBala
         </div>
       </form>
     </Modal>
+    </SnackbarProvider>
   );
 };
 
