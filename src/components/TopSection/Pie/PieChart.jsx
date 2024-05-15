@@ -30,7 +30,7 @@ export default class PieComponent extends PureComponent {
 
   render() {
     return (
-        <div className={styles.PieChart}> <PieChart width={199} height={199}>
+        <div className={styles.PieChart}> <PieChart width="100%" height="100%">
         <Pie
           data={data}
           cx={100}
