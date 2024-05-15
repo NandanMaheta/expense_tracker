@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
-const ModalAdd = ({ isOpen, onClose, updateBalance }) => {
+const ModalAdd = ({ isOpen, onClose,updateBalance }) => {
   const customStyles = {
     overlay: {
       backgroundColor: "#FFFFFFC4",
     },
     content: {
-      width: "90%", // Set width to 90% for smaller screens
-      maxWidth: "538px", // Max width for larger screens
-      height: "auto", // Auto height to fit content
+      width: "75%",
+      height: "60%",
       borderRadius: "15px",
       backgroundColor: "#EFEFEFD9",
       margin: "auto",
@@ -19,71 +18,72 @@ const ModalAdd = ({ isOpen, onClose, updateBalance }) => {
       justifyContent: "space-around",
       border: "none",
       boxShadow: "0px 4px 4px 0px #00000040",
-      padding: "20px", // Added padding for better spacing
     },
     HeadingText: {
-      width: "100%",
-      maxWidth: "178px", // Max width for larger screens
+      width: "178px",
+      height: "34px",
+      font: "Ubuntu",
       fontFamily: "Ubuntu",
-      fontSize: "5vw", // Font size responsive to viewport width
+      fontSize: "30px",
       fontWeight: "700",
-      lineHeight: "1.2em", // Adjusted line height
+      lineHeight: "34.47px",
       textAlign: "left",
       color: "#000000",
-      marginBottom: "20px", // Margin bottom for spacing
     },
     FormContainer: {
-      width: "100%",
-      maxWidth: "510px", // Max width for larger screens
+      width: "60%",
+      height: "54px",
+      border: "0px",
+      borderRadius: "15px",
       display: "flex",
-      flexDirection: "column", // Stack inputs vertically on smaller screens
-      alignItems: "center",
+      justifyContent: "space-between",
+    //   alignItems: "center",
+      
     },
     input: {
-      width: "100%",
-      maxWidth: "217px", // Max width for larger screens
+      width: "217px",
       height: "51px",
       borderRadius: "15px",
-      background: "linear-gradient(0deg, #D9D9D9, #D9D9D9)",
+      background:
+        "linear-gradient(0deg, #D9D9D9, #D9D9D9), linear-gradient(0deg, #D9D9D9, #D9D9D9), linear-gradient(0deg, #FBFBFB, #FBFBFB)",
       boxShadow: "0px 4px 4px 0px #00000040",
       border: "0px",
       color: "#919191",
-      fontFamily: "Open Sans",
-      fontSize: "4vw", // Font size responsive to viewport width
+      font: "Open Sans",
+      fontSize: "16px",
       fontWeight: "400",
-      lineHeight: "1.2em", // Adjusted line height
-      marginBottom: "10px", // Margin bottom for spacing
+      lineHeight: "21.78px",
+      marginRight:"10px"
     },
     CancelButton: {
-      width: "100%",
-      maxWidth: "112px", // Max width for larger screens
+      width: "112px",
       height: "51px",
       borderRadius: "15px",
       border: "0px",
-      background: "linear-gradient(0deg, #D9D9D9, #D9D9D9)",
+      background:
+        "linear-gradient(0deg, #D9D9D9, #D9D9D9), linear-gradient(0deg, #D9D9D9, #D9D9D9), linear-gradient(0deg, #E3E3E3, #E3E3E3)",
       boxShadow: "0px 4px 4px 0px #00000040",
       fontFamily: "Open Sans",
-      fontSize: "4vw", // Font size responsive to viewport width
+      fontSize: "16px",
       fontWeight: "400",
-      lineHeight: "1.2em", // Adjusted line height
+      lineHeight: "21.79px",
       color: "#000000",
-      marginLeft: "10px",
-      marginTop: "10px", // Margin top for spacing
+      marginLeft:"10px"
     },
     AddButton: {
-      width: "100%",
-      maxWidth: "145px", // Max width for larger screens
-      height: "51px",
-      border: "0px",
-      borderRadius: "15px",
-      backgroundColor: "#F4BB4A",
-      boxShadow: "0px 4px 4px 0px #00000040",
-      fontFamily: "Open Sans",
-      fontSize: "4vw", // Font size responsive to viewport width
-      fontWeight: "700",
-      lineHeight: "1.2em", // Adjusted line height
-      color: "#FFFFFF",
-      marginTop: "10px", // Margin top for spacing
+        width: "145px",
+    height: "51px",
+    border: "0px",
+    borderRadius: "15px",
+    backgroundColor:"#F4BB4A",
+      
+    boxShadow: "0px 4px 4px 0px #00000040",
+    fontFamily: "Open Sans",
+    fontSize: "16px",
+    fontWeight: "700",
+    lineHeight: "21.79px",
+    
+    color: "#FFFFFF",
     },
   };
 
@@ -106,26 +106,31 @@ const ModalAdd = ({ isOpen, onClose, updateBalance }) => {
         return newTotal;
       });
     }
+    // window.location.reload()
     setCurrentAdd("");
     onClose();
+
   };
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
       <p style={customStyles.HeadingText}>Add Balance</p>
       <div style={customStyles.FormContainer}>
-        <form onSubmit={handleSubmit}>
+        <form action="submit">
           <input
-            style={customStyles.input}
+          style={customStyles.input}
             type="number"
             placeholder="Income Amount"
             value={currentAdd}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
-          <button type="submit" style={customStyles.AddButton}>
+          <button
+            style={customStyles.AddButton}
+            onClick={(e) => handleSubmit(e)}
+          >
             Add Balance
           </button>
-          <button type="button" onClick={onClose} style={customStyles.CancelButton}>
+          <button onClick={onClose} style={customStyles.CancelButton}>
             Cancel
           </button>
         </form>
